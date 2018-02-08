@@ -32,8 +32,8 @@
 #include "parser.h"
 
 
-#define LINE_SIZE 512               // Maximum allowed length of each line.
-const char *DEFAULT_PROMPT = ">";   // Prompt to be displayed on shell.
+#define LINE_SIZE 512  // Maximum allowed length of each line.
+const char *DEFAULT_PROMPT = "karageorgiou_8420>"; // Prompt to be displayed on shell.
 
 
 void start_shell(FILE *input_stream);
