@@ -27,7 +27,7 @@
         -6d. Built-in commands
         -6e. Defining multiple commands in a line
         -6f. Executing commands based on the return code of previous command
-        
+
 
 1. Introduction.
 
@@ -37,7 +37,7 @@ of Electrical and Computers Engineering department of Aristotle University of
 Thessaloniki, Greece during 2017-2018 season.
 
 CRuSh stands for "Completely Rubbish Shell", a funny title, though perfectly
-describing the real world usages of this shell. After all, at least at it this
+describing the real world usages of this shell. After all, at least at this
 stage, it is not intended as a project to create an everyday shell.
 
 It is intended for providing a minimal implementation of core concepts used
