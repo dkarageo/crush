@@ -22,11 +22,15 @@
 #include "parser.h"
 
 
+char *exclude_comment(char *line, const char *delim, const char *solid_delim);
+
+
 int parse_line(char *line, command_t ***commands, int *commandc)
 {
     char *main_delim = ";";    // Delimiter for independent command sequences.
     char *sub_delim = "&&";    // Delimiter for chained command sequences.
     char *solid_delim = "\"";  // Delimiter that defines a solid block.
+    char *comment_delim = "#"; // Delimiter that defines a comment.
 
     command_t **comms = NULL;  // Pointer to the array containing found commands.
     int comms_c = 0;           // Number of found commands.
@@ -46,6 +50,9 @@ int parse_line(char *line, command_t ***commands, int *commandc)
     // Replace all newlines by spaces.
     str_char_replace(line, '\n', ' ');
     str_char_replace(line, '\r', ' ');
+
+    // Clean comment part.
+    exclude_comment(line, comment_delim, solid_delim);
 
     // Start searching for blocks delimited by main_delim from the beggining.
     char *cur_main = NULL;   // Pointer to current token found.
@@ -92,4 +99,22 @@ int parse_line(char *line, command_t ***commands, int *commandc)
     *commandc = comms_c;
 
     return 0;
+}
+
+/**
+ * Terminate a line at comment position by placing a NUL char.
+ *
+ * Parameters:
+ *  -line : The line to search for comment occurence.
+ *  -delim : The delimiter that defines the beggining of a comment.
+ *  -solid_delim : The delimiter that defines a solid block.
+ *
+ * Returns:
+ *  The position of the beggining of a comment if it was found, else NULL.
+ */
+char *exclude_comment(char *line, const char *delim, const char *solid_delim)
+{
+    strtok_multi_solid(&line, delim, solid_delim);
+
+    return line;
 }
