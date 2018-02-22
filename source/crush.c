@@ -94,10 +94,7 @@ void start_shell(FILE *input_stream)
 
         // Parse the current line into commands that can be executed.
         rc = parse_line(line, &commands, &commandc);
-        if (rc) {
-            printf("Could not parse line '%s'\n", line);
-            continue;
-        }
+        if (rc) printf("Could not parse line '%s'\n", line);
 
         // Execute the parsed commands, only if parsing succeeded.
         if (!rc) {
