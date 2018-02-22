@@ -30,7 +30,6 @@ $(BINDIR):
 
 clean:
 	rm $(OBJDIR)/*.o
-	rm $(CUOBJDIR)/*.o
 
 purge: clean
 	rm bin/*
