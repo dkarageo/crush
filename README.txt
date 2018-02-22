@@ -27,6 +27,7 @@
         -6d. Built-in commands
         -6e. Defining multiple commands in a line
         -6f. Executing commands based on the return code of previous command
+        -6g. Defining comments
 
 
 1. Introduction.
@@ -48,7 +49,7 @@ scratch or who wants to understand some fundamental concepts.
 2. Licensing.
 
 This project is licensed under GNU GPL v3.0. If a copy of this license did not
-come with this README, you can get a copy here:
+come with the package containing this README, you can get a copy here:
 https://www.gnu.org/licenses/gpl-3.0.en.html
 
 
@@ -189,3 +190,12 @@ to chain an arbitrary number of commands as following:
 Also, '&&' operator can be combined with ';' operator, so many chained blocks
 are contained in a single line, like following:
     <chain1_com1> && <chain1_com2>; <chain2_com1>; <chain3_com1> && <chain3_com2> ....
+
+6g. Defining comments:
+
+Comments can be defined by '#' character. Comments can either span an entire
+line, or included right after the command definition in the same line. All
+characters after '#' are completely ignored by the shell.
+The following examples demonstrate how to define comments:
+    -Entire line comments: "# This is a comment line and will be ignored."
+    -In-line comments: "ls -la  # This is a comment and will be ignored."

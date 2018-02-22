@@ -30,15 +30,14 @@ $(BINDIR):
 
 clean:
 	rm $(OBJDIR)/*.o
-	rm $(CUOBJDIR)/*.o
 
 purge: clean
-	rm bin/*
+	rm $(BINDIR)/*
 
 run:
-	./bin/crush
+	./$(BINDIR)/crush
 
 run_batch:
-	./bin/crush $(script)
+	./$(BINDIR)/crush $(script)
 
 .PHONY: all clean purge
