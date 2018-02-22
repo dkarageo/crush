@@ -53,7 +53,8 @@ Makefile shorthand: `make run_batch script=<path_to_shell_script>`
 4. Defining multiple commands in a line separated by `;`.
 5. Creating chains of commands using `&&` operator.
 6. Simple built-in commands such as *cd*, *quit*, etc.
-7. Various error messages.
+7. Define comments right after '#' character.
+8. Various error messages.
 
 More detail about *Crush* features can be found in `README.txt`.
 
