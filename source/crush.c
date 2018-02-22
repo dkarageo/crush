@@ -85,16 +85,24 @@ void start_shell(FILE *input_stream)
     command_t **commands;  // Commands parsed out of current line.
     int commandc;          // Number of parsed commands.
     int rc;
+    int line_count = 0;    // Counter of current line read. Meaningful only
+                           // when executing scripts.
 
-    // Initially print prompt.
+    // When at interactive mode, initially print prompt.
     if (input_stream == stdin) printf("%s ", get_prompt(prompt, sizeof(prompt)));
 
     // Keep reading a line from input stream, whatever it is (script or stdin).
     while(fgets(line, LINE_SIZE, input_stream)) {
 
+        if (input_stream != stdin) line_count++;
+
         // Parse the current line into commands that can be executed.
         rc = parse_line(line, &commands, &commandc);
-        if (rc) printf("Could not parse line '%s'\n", line);
+        if (rc) {
+            printf("Could not parse line ");
+            if (input_stream != stdin) printf("%d ", line_count);
+            printf(": '%s'\n", line);
+        }
 
         // Execute the parsed commands, only if parsing succeeded.
         if (!rc) {
